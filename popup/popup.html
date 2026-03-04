@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Teams チャットエクスポーター</h1>
+
+    <div id="error-banner" class="error-banner hidden"></div>
+
+    <section class="form-section">
+      <label class="label">エクスポート期間</label>
+      <div class="radio-group">
+        <label><input type="radio" name="period" value="24h" checked> 過去24時間</label>
+        <label><input type="radio" name="period" value="7d"> 過去7日間</label>
+        <label><input type="radio" name="period" value="30d"> 過去30日間</label>
+        <label><input type="radio" name="period" value="custom"> カスタム</label>
+      </div>
+      <div id="custom-dates" class="custom-dates hidden">
+        <label>開始日 <input type="date" id="date-from"></label>
+        <label>終了日 <input type="date" id="date-to"></label>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <label class="label">出力形式</label>
+      <div class="radio-group">
+        <label><input type="radio" name="format" value="markdown" checked> Markdown</label>
+        <label><input type="radio" name="format" value="csv"> CSV</label>
+        <label><input type="radio" name="format" value="json"> JSON</label>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <label class="label">オプション</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="include-reactions"> リアクションを含む</label>
+        <label><input type="checkbox" id="include-system" checked> システムメッセージを含む</label>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button id="btn-export" class="btn btn-primary">エクスポート開始</button>
+      <button id="btn-cancel" class="btn btn-secondary hidden">キャンセル</button>
+    </div>
+
+    <div id="progress" class="progress hidden">
+      <div class="progress-text">
+        <span id="progress-status">収集中...</span>
+        <span id="progress-count">0 件</span>
+      </div>
+      <div class="progress-bar">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+      <p class="progress-note">※ ポップアップを閉じないでください</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
